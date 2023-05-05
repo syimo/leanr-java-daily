@@ -143,9 +143,9 @@ public class Day1 {
         //冒泡排序
         for (int i = 0; i < array2.length - 1; i++) {
 
-            for (int j = 0; j < array2.length - 1; j++) {
+            for (int j = 0; j < array2.length - i - 1; j++) {
 
-                if (array[j + 1] > array2[j]) {
+                if (array2[j] >= array2[j + 1]) {
                     int temp = array2[j + 1];
                     array2[j + 1] = array2[j];
                     array2[j] = temp;
