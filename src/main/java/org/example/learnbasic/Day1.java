@@ -14,8 +14,9 @@ public class Day1 {
 
 //        testArray();
 //        getMaxAndMin();
-        sort();
+//        sort();
 
+        insertNumIndex();
     }
 
 
@@ -146,13 +147,77 @@ public class Day1 {
             for (int j = 0; j < array2.length - i - 1; j++) {
 
                 if (array2[j] >= array2[j + 1]) {
-                    int temp = array2[j + 1];
-                    array2[j + 1] = array2[j];
-                    array2[j] = temp;
+//                    int temp = array2[j + 1];
+//                    array2[j + 1] = array2[j];
+//                    array2[j] = temp;
+                    swap(array2, j, j + 1);
                 }
             }
         }
         System.out.println("arrays12 = " + Arrays.toString(array2));
+    }
+
+    /**
+     * 交换两个数的值,通过异或方法
+     *
+     * @param arr
+     * @param a
+     * @param b
+     */
+    public static void swap(int[] arr, int a, int b) {
+        arr[a] = arr[a] ^ arr[b];
+        arr[b] = arr[a] ^ arr[b];
+        arr[a] = arr[a] ^ arr[b];
+
+    }
+
+    /**
+     * 折中查找，前提是：排序好的数据
+     */
+    public static int halfSearch() {
+        //排序
+        int[] array2 = {100, 32, 4, 1, 22, 66, 44, 123, 66, 990, 12};
+        Arrays.sort(array2);
+
+        int key = 990;
+        //折中查找
+        int min = 0, max = array2.length - 1, mid = (min + max) >> 1;
+        while (min <= max) {
+            if (key > array2[mid]) {
+                min = mid + 1;
+            } else if (key < array2[mid]) {
+                max = mid - 1;
+            } else {
+                return mid;
+            }
+            mid = (min + max) >> 1;
+        }
+        return -1;
+    }
+
+
+    /**
+     * 元素插入有序的数组当中
+     */
+    public static void insertNumIndex() {
+        int[] array2 = {1, 4, 12, 22, 32, 44, 66, 66, 100, 123, 990};
+        int key = 45;
+        int insertIndex = -1, min = 0, max = array2.length - 1, mid;
+        while (min <= max) {
+            mid = (min + max) >> 1;
+            if (key > array2[mid]) {
+                min = mid + 1;
+            } else if (key < array2[mid]) {
+                max = mid - 1;
+            } else {
+                insertIndex = mid;
+                break;
+            }
+        }
+        if (insertIndex == -1) {
+            insertIndex = min;
+        }
+        System.out.println("mid insert index=" + insertIndex);
     }
 
 
