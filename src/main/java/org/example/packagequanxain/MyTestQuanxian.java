@@ -21,8 +21,7 @@ public class MyTestQuanxian {
         qxChild.hahaPro();
         qxChild.hahaPub();
         qxChild.hahaDefault();
-
-
+        
         Dog dog = new Dog();
         dog.hahaProtected();
 
@@ -32,5 +31,12 @@ public class MyTestQuanxian {
         cat.hahaDefault();
         cat.hahaProtected();
 
+        ///带有pack的编译java文件的时候， javac -d . Demo.java//指定类文件存放目录
+        // 执行： java pack.Demo
+        //package 让java文件和class文件分隔开来
+
+        Object s=new Object(){
+
+        };
     }
 }
